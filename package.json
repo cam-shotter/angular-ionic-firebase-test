@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-live-reload": "ionic serve",
+    "start:hmr": "ionic serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
