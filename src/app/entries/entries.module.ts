@@ -8,6 +8,9 @@ import { EntriesPageRoutingModule } from './entries-routing.module';
 
 import { EntriesPage } from './entries.page';
 import { QuillWrapperModule } from '../shared/quill-wrapper/quill.module';
+import { CardComponent } from './entry/card/card.component';
+import { ListComponent } from './entry/list/list.component';
+import { CreateComponent } from './entry/create/create.component';
 
 @NgModule({
   imports: [
@@ -17,6 +20,6 @@ import { QuillWrapperModule } from '../shared/quill-wrapper/quill.module';
     EntriesPageRoutingModule,
     QuillWrapperModule
   ],
-  declarations: [EntriesPage]
+  declarations: [EntriesPage, CardComponent, ListComponent, CreateComponent]
 })
 export class EntriesPageModule {}
