@@ -1,17 +1,6 @@
 import { Component } from '@angular/core';
-
-export enum Icons {
-  addCircle = 'add-circle',
-  list = 'list',
-  calendar = 'calendar',
-  archive = 'archive'
-}
-
-export interface Page {
-  title: string,
-  url: string,
-  icon: Icons
-}
+import { Icons } from './shared/enums/icons';
+import { Page } from './shared/interfaces/page';
 
 @Component({
   selector: 'app-root',
