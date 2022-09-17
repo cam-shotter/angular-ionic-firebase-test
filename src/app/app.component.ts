@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Icons } from './shared/enums/icons';
-import { Page } from './shared/interfaces/page';
+import { Icons } from '@Shared/enums/icons';
+import { Page } from '@Shared/interfaces/page';
 
 @Component({
   selector: 'app-root',

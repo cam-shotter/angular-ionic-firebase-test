@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Page } from '../shared/interfaces/page';
+import { Page } from '@Shared/interfaces/page';
 
 @Component({
   selector: 'app-sidebar',
