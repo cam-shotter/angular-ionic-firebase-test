@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'entries',
+    path: 'entries/:id',
     loadChildren: () => import('./entries/entries.module').then( m => m.EntriesPageModule)
   }
 ];
