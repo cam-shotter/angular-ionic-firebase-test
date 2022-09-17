@@ -1,0 +1,105 @@
+ion-list {
+  padding: 1.25rem 0;
+}
+
+ion-note {
+  margin-block-end: 1.75rem;
+}
+
+ion-list-header,
+ion-note {
+  padding-inline-start: 0.5rem;
+}
+
+ion-list#entry-type-list {
+  border-block-end: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+ion-list#entry-type-list ion-list-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  min-height: 1.25rem;
+}
+
+ion-list#labels-list ion-list-header {
+  font-size: 1rem;
+
+  margin-block-end: 1rem;
+
+  color: #757575;
+
+  min-height: 1.5rem;
+}
+
+ion-item {
+  --padding-inline: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+ion-item:hover {
+  --background: rgba(var(--ion-color-tertiary-rgb), 0.14);
+}
+
+ion-item.selected {
+  --background: rgba(var(--ion-color-tertiary-rgb), 0.4);
+}
+
+ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-list {
+  padding: 1.25rem 0 0 0;
+}
+
+ion-note {
+  line-height: 1.5rem;
+  margin-block-end: 1.25rem;
+}
+
+ion-item {
+  --padding-inline: 1rem;
+  --min-height: 50px;
+}
+
+ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-item ion-icon {
+  font-size: 1.5rem;
+  color: #73849a;
+}
+
+ion-list#labels-list ion-list-header {
+  margin-block-end: 0.5rem;
+}
+
+ion-list-header,
+ion-note {
+  padding-inline: 1rem;
+}
+
+ion-note {
+  margin-block-end: 0.5rem;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 1rem;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
