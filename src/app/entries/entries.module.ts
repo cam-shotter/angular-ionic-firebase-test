@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EntriesPageRoutingModule } from './entrie-routing.module';
+import { EntriesPageRoutingModule } from './entries-routing.module';
 
 import { EntriesPage } from './entries.page';
 import { QuillWrapperModule } from '../shared/components/quill/quill.module';
