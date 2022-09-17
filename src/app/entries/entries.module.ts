@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EntriesPageRoutingModule } from './entries-routing.module';
 
 import { EntriesPage } from './entries.page';
-import { QuillWrapperModule } from '../shared/components/quill/quill.module';
+import { QuillWrapperModule } from '../shared/quill-wrapper/quill.module';
 
 @NgModule({
   imports: [

@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { QuillWrapperModule } from './shared/components/quill/quill.module';
+import { QuillWrapperModule } from './shared/quill-wrapper/quill.module';
 
 @NgModule({
   declarations: [AppComponent],
