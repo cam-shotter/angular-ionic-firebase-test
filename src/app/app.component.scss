@@ -2,13 +2,7 @@ ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
 
-ion-menu.md ion-content {
+ion-menu ion-content {
   --padding-inline: 0.5rem;
-  --padding-block: 1.25rem;
+  --padding-block: 1.5rem;
 }
-
-ion-menu.ios ion-content {
-  --padding-block-end: 1.25rem;
-}
-
-
