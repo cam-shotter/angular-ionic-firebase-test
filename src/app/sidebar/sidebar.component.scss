@@ -3,11 +3,10 @@ ion-list {
 }
 
 ion-note {
-  line-height: 1.5rem;
-  margin-block-end: 1.75rem;
   display: inline-block;
+  margin-block-end: 1rem;
+  line-height: 1.5rem;
   font-size: 1rem;
-
   color: var(--ion-color-medium-shade);
 }
 
@@ -18,23 +17,20 @@ ion-note {
 
 ion-list#entry-type-list {
   border-block-end: 1px solid var(--ion-color-step-150, #d7d8da);
+
+  & ion-list-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-height: 1.25rem;
+  }
 }
 
-ion-list#entry-type-list ion-list-header {
-  font-size: 1.5rem;
-  font-weight: 600;
-
-  min-height: 1.25rem;
-}
 
 ion-list#labels-list ion-list-header {
   font-size: 1rem;
-
   margin-block-end: 1rem;
-
-  color: #757575;
-
   min-height: 1.5rem;
+  color: #757575;
 }
 
 ion-item {
