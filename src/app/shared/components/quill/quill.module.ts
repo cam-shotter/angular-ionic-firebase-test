@@ -5,23 +5,15 @@ import { QuillModule } from 'ngx-quill';
 import { IonicModule } from '@ionic/angular';
 
 const toolbarConfig = [
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['bold', 'italic', 'underline'],        // toggled buttons
   ['blockquote', 'code-block'],
 
   [{ header: 1 }, { header: 2 }],               // custom button values
   [{ list: 'ordered'}, { list: 'bullet' }],
-  [{ script: 'sub'}, { script: 'super' }],      // superscript/subscript
   [{ indent: '-1'}, { indent: '+1' }],          // outdent/indent
-  [{ direction: 'rtl' }],                         // text direction
 
-  [{ size: ['huge', 'large', false, 'small'] }],  // custom dropdown
-  [{ header: [1, 2, false] }],
-
-  [{ color: [] }, { background: [] }],          // dropdown with defaults from theme
-  [{ font: [] }],
+  [{ color: [] }],          // dropdown with defaults from theme
   [{ align: [] }],
-
-  ['clean'],                                         // remove formatting button
 
   ['link', 'image', 'video']                         // link and image, video
 ];
