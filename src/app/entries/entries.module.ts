@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './folder-routing.module';
+import { EntriesPageRoutingModule } from './entrie-routing.module';
 
-import { FolderPage } from './folder.page';
+import { EntriesPage } from './entries.page';
 import { QuillWrapperModule } from '../shared/components/quill/quill.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { QuillWrapperModule } from '../shared/components/quill/quill.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule,
+    EntriesPageRoutingModule,
     QuillWrapperModule
   ],
-  declarations: [FolderPage]
+  declarations: [EntriesPage]
 })
-export class FolderPageModule {}
+export class EntriesPageModule {}

@@ -3,12 +3,12 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Journal Entries</ion-list-header>
-          <ion-note>How are you feeling today...?</ion-note>
+          <ion-list-header>Entries</ion-list-header>
+          <ion-note>Have a great day!</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" routerLinkActive="selected">
+              <ion-icon color="primary" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -16,11 +16,12 @@
 
         <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
+            <ion-menu-toggle auto-hide="false" *ngFor="let label of labels">
+              <ion-item lines="none">
+                <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+                <ion-label>{{ label }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
