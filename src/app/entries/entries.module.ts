@@ -18,7 +18,7 @@ import { CreateComponent } from './entry/create/create.component';
     FormsModule,
     IonicModule,
     EntriesPageRoutingModule,
-    QuillWrapperModule
+    QuillWrapperModule,
   ],
   declarations: [EntriesPage, CardComponent, ListComponent, CreateComponent]
 })

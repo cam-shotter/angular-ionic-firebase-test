@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Entry } from './entry/entry.class';
 
 @Component({
   selector: 'app-entries',
@@ -8,9 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EntriesPage implements OnInit {
   public entries: string;
-  public createNewEntry: boolean = true;
+  public creatingNewEntry: boolean = true;
+  public selectedEntry: Entry;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+  createNewEntry() {
+    this.selectedEntry = Entry.createNew();
+  }
+
+  selectEntry(entry: Entry) {
+    this.selectedEntry = entry.clone();
+  }
 
   ngOnInit() {
     this.entries = this.activatedRoute.snapshot.paramMap.get('id');
