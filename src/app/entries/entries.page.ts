@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EntriesPage implements OnInit {
   public entries: string;
+  public createNewEntry: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

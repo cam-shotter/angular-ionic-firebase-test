@@ -15,6 +15,12 @@
   </ion-header>
 
   <div id="container">
-    <app-create></app-create>
+    <ng-container *ngIf="createNewEntry;else viewEntries">
+      <app-create></app-create>
+    </ng-container>
+    <ng-template #viewEntries>
+      <app-list></app-list>
+      <app-card></app-card>
+    </ng-template>
   </div>
 </ion-content>

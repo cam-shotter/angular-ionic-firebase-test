@@ -8,10 +8,6 @@ const routes: Routes = [
   {
     path: '',
     component: EntriesPage
-  },
-  {
-    path: 'Create',
-    component: CreateComponent
   }
 ];
 
