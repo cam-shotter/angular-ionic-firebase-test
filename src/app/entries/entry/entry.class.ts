@@ -7,38 +7,38 @@ export enum Label {
   important = 'important',
 }
 
-export interface EntryInterface {
-  id: string,
-  name: string,
-  dateSaved: Date,
-  content: string,
-  labels?: Label[],
-  state: EntryStateEnum,
-  revisionHistory?: EntryInterface[]
-}
-
 export class Entry {
-  public entry: EntryInterface;
+  public id: string;
+  public name: string;
+  public dateSaved: Date;
+  public content: string;
+  public labels: Label[];
+  public state: EntryStateEnum;
+  public revisionHistory?: Entry[];
 
-  constructor() {
-    this.entry.id = '',
-    this.entry.name = '',
-    this.entry.dateSaved = new Date(),
-    this.entry.content = '',
-    this.entry.labels = undefined,
-    this.entry.state = EntryStateEnum.new,
-    this.entry.revisionHistory = undefined
+  constructor(
+    id = '',
+    name = '',
+    dateSaved = new Date(),
+    content = '',
+    labels = [],
+    state = EntryStateEnum.new,
+    revisionHistory = undefined
+  ) {}
+
+  static createNew(): Entry {
+    return new Entry();
   }
 
   clone(): Entry {
     return new Entry(
-      this.entry.id,
-      this.entry.name,
-      this.entry.dateSaved,
-      this.entry.content,
-      this.entry.labels,
-      this.entry.state,
-      this.entry.revisionHistory,
+      this.id,
+      this.name,
+      this.dateSaved,
+      this.content,
+      this.labels,
+      this.state,
+      this.revisionHistory,
     )
   }
 }
