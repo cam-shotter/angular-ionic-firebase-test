@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, EMPTY, Observable, of, Subject } from 'rxjs';
+import { EntriesService } from './entries.service';
 import { Entry } from './entry/entry.class';
 
 @Component({
@@ -8,13 +10,23 @@ import { Entry } from './entry/entry.class';
   styleUrls: ['./entries.page.scss'],
 })
 export class EntriesPage implements OnInit {
-  public entries: string;
-  public creatingNewEntry: boolean = true;
+  private errorMessageSubject = new Subject<Entry[]>();
+  errorMessage$ = this.errorMessageSubject.asObservable();
+
+  public id: string;
+  public creatingNewEntry: boolean = false;
   public selectedEntry: Entry;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(private activatedRoute: ActivatedRoute, private entriesService: EntriesService) {}
+  entries$ = this.entriesService.entries$
+    .pipe(
+      catchError((err) => {
+        this.errorMessageSubject.next(err);
+        return EMPTY;
+      })
+    )
 
-  createNewEntry() {
+  createNewEntry(): void {
     this.selectedEntry = Entry.createNew();
   }
 
@@ -23,7 +35,9 @@ export class EntriesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.entries = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log('id: ', this.id);
+
   }
 
 }

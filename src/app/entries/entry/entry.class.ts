@@ -7,6 +7,16 @@ export enum Label {
   important = 'important',
 }
 
+export interface EntryInterface {
+  id: string;
+  name: string;
+  dateSaved: Date;
+  content: string;
+  labels: Label[];
+  state: EntryStateEnum;
+  revisionHistory?: Entry[];
+}
+
 export class Entry {
   public id: string;
   public name: string;

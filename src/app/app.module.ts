@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuillWrapperModule } from './shared/quill-wrapper/quill.module';
 import { SidebarModule } from './sidebar/sidebar.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { SidebarModule } from './sidebar/sidebar.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     SidebarModule,
-    QuillWrapperModule
+    QuillWrapperModule,
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
