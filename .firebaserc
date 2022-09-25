@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "journal-9471c"
+  },
+  "targets": {
+    "journal-9471c": {
+      "hosting": {
+        "app": [
+          "journal-9471c"
+        ]
+      }
+    }
   }
 }

@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuillWrapperModule } from './shared/quill-wrapper/quill.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { HttpClientModule } from '@angular/common/http';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SidebarModule,
     QuillWrapperModule,
-    HttpClientModule
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
