@@ -9,10 +9,7 @@ import { Entry } from '../entry.class';
 export class ListComponent implements OnInit {
   @Input() entry: Entry;
 
-  constructor() {
-    console.log('entry: ', this.entry);
-
-  }
+  constructor() {}
 
   ngOnInit() {}
 

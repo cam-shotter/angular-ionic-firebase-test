@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, EMPTY, Observable, of, Subject } from 'rxjs';
+import { catchError, EMPTY, Observable, of, Subject, tap } from 'rxjs';
 import { EntriesService } from './entries.service';
 import { Entry } from './entry/entry.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -17,24 +17,19 @@ export class EntriesPage implements OnInit {
   public id: string;
   public creatingNewEntry: boolean = false;
   public selectedEntry: Entry;
-  public entries: Observable<Entry[]>;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private entriesService: EntriesService,
-    private firestore: AngularFirestore
-  ) {
-    this.entries = this.firestore.collection<Entry>('entries').valueChanges();
-    console.log(this.entries.subscribe());
+  ) {}
 
-  }
-
-  // entries$ = this.entriesService.entries$
-  //   .pipe(
-  //     catchError((err) => {
-  //       this.errorMessageSubject.next(err);
-  //       return EMPTY;
-  //     })
-  //   )
+  entries$ = this.entriesService.entries$
+    .pipe(
+      catchError((err) => {
+        this.errorMessageSubject.next(err);
+        return EMPTY;
+      })
+    )
 
   createNewEntry(): void {
     this.selectedEntry = Entry.createNew();

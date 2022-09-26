@@ -14,22 +14,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container"
-    *ngIf="entries$ | async as entries"> -->
-    <!-- <ng-container *ngIf="creatingNewEntry;else viewEntries">
+  <div id="container">
+    <ng-container *ngIf="creatingNewEntry; else viewEntries">
       <app-create></app-create>
     </ng-container>
-    <ng-template #viewEntries> -->
-      <ul>
-
-        <li
-        *ngFor="let entry of entries | async"
-        >
-          {{entry.name}}
-        <!-- <app-list [entry]="selectedEntry"></app-list>
-          <app-card></app-card> -->
-        </li>
-      </ul>
-    <!-- </ng-template> -->
-  <!-- </div> -->
+    <ng-template #viewEntries>
+      <ng-container *ngFor="let entry of entries$ | async">
+        <app-list [entry]="entry"></app-list>
+      </ng-container>
+    </ng-template>
+  </div>
 </ion-content>
