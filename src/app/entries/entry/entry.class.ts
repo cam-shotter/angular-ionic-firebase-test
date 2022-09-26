@@ -5,34 +5,35 @@ export enum EntryStateEnum {
 
 export enum Label {
   important = 'important',
+  personal = 'personal'
 }
 
 export interface EntryInterface {
   id: string;
   name: string;
-  dateSaved: Date;
+  lastSaved: Date;
   content: string;
+  createdBy: string;
   labels: Label[];
-  state: EntryStateEnum;
   revisionHistory?: Entry[];
 }
 
 export class Entry {
   public id: string;
   public name: string;
-  public dateSaved: Date;
+  public lastSaved: Date;
   public content: string;
+  public createdBy: string;
   public labels: Label[];
-  public state: EntryStateEnum;
   public revisionHistory?: Entry[];
 
   constructor(
     id = '',
     name = '',
-    dateSaved = new Date(),
+    lastSaved = new Date(),
     content = '',
+    createdBy = 'Cam',
     labels = [],
-    state = EntryStateEnum.new,
     revisionHistory = undefined
   ) {}
 
@@ -44,10 +45,10 @@ export class Entry {
     return new Entry(
       this.id,
       this.name,
-      this.dateSaved,
+      this.lastSaved,
       this.content,
+      this.createdBy,
       this.labels,
-      this.state,
       this.revisionHistory,
     )
   }
