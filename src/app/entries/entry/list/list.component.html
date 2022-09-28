@@ -6,8 +6,9 @@
     <ion-label>
       <h2>{{entry.name}}</h2>
       <p>{{entry.content}}</p>
-      <p>{{entry.createdBy}}</p>
-      <p>{{entry.labels}}</p>
     </ion-label>
+    <ion-chip *ngFor="let label of entry.labels">
+      <ion-label>{{label}}</ion-label>
+    </ion-chip>
   </ion-item>
 </ion-list>
