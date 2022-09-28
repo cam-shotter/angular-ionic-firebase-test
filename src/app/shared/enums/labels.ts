@@ -1,4 +1,4 @@
 export enum Labels {
-  important = 'important',
-  personal = 'personal'
+  important = 'Important',
+  personal = 'Personal'
 }
