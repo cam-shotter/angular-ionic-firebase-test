@@ -1,4 +1,10 @@
-<p>{{entry.name}}</p>
-<p>{{entry.content}}</p>
-<p>{{entry.createdBy}}</p>
-<p>{{entry.labels}}</p>
+<ion-list [inset]="true">
+  <ion-item button [detail]="true">
+    <ion-label>
+      <h2>{{entry.name}}</h2>
+      <p>{{entry.content}}</p>
+      <p>{{entry.createdBy}}</p>
+      <p>{{entry.labels}}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
