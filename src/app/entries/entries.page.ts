@@ -40,9 +40,10 @@ export class EntriesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log('id: ', this.id);
-
+    const getId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = getId;
+    if (getId === "Create") {
+      this.creatingNewEntry = true;
+    }
   }
-
 }
