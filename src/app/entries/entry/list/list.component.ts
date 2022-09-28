@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Labels } from '@Shared/enums/labels';
 import { Entry } from '../entry.class';
 
 @Component({
@@ -9,7 +10,10 @@ import { Entry } from '../entry.class';
 export class ListComponent implements OnInit {
   @Input() entry: Entry;
 
-  constructor() {}
+  labelsEnum = Labels;
+
+  constructor() {
+  }
 
   ngOnInit() {}
 
