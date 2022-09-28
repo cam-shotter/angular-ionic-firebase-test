@@ -1,11 +1,8 @@
+import { Labels } from "@Shared/enums/labels";
+
 export enum EntryStateEnum {
   new = 'new',
   saved = 'saved'
-}
-
-export enum Label {
-  important = 'important',
-  personal = 'personal'
 }
 
 export interface EntryInterface {
@@ -14,7 +11,7 @@ export interface EntryInterface {
   lastSaved: Date;
   content: string;
   createdBy: string;
-  labels: Label[];
+  labels: Labels[];
   revisionHistory?: Entry[];
 }
 
@@ -24,7 +21,7 @@ export class Entry {
   public lastSaved: Date;
   public content: string;
   public createdBy: string;
-  public labels: Label[];
+  public labels: Labels[];
   public revisionHistory?: Entry[];
 
   constructor(
