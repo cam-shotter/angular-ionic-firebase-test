@@ -7,8 +7,11 @@
       <h2>{{entry.name}}</h2>
       <p>{{entry.content}}</p>
     </ion-label>
-    <ion-chip *ngFor="let label of entry.labels">
-      <ion-label>{{label}}</ion-label>
-    </ion-chip>
+    <ng-container *ngFor="let label of entry.labels">
+      <ion-chip [outline]="true" [color]="(label==='important')?'danger':''" >
+        <ion-avatar *ngIf="label==='important'"><ion-icon name="alert-circle-outline"></ion-icon></ion-avatar>
+        <ion-label>{{label}}</ion-label>
+      </ion-chip>
+    </ng-container>
   </ion-item>
 </ion-list>
