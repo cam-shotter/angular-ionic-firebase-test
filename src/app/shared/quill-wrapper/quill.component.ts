@@ -1,41 +1,47 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ContentChange, QuillEditorComponent } from 'ngx-quill';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, map, Observable, Subject, Subscription, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-quill',
   templateUrl: './quill.component.html',
   styleUrls: ['./quill.component.scss'],
 })
-export class QuillComponent implements OnInit, OnDestroy {
+export class QuillComponent implements OnInit {
   @Input() editorPlaceholder = 'Placeholder';
 
   @ViewChild('editor', {
     static: true
   }) editor: QuillEditorComponent
 
-  private contentSubject = new BehaviorSubject(this.editorPlaceholder);
-  editorContent$ = this.contentSubject.asObservable();
+  private contentHTML: string;
 
-  private readonly destroy$ = new Subject<void>();
+  editorContent$: Observable<string>;
 
-  constructor() {}
+  constructor(private firestore: AngularFirestore) {}
 
   ngOnInit() {
-    this.editor
+    this.editorContent$ = this.editor
       .onContentChanged
       .pipe(
-        takeUntil(this.destroy$),
         debounceTime(400),
         distinctUntilChanged(),
+        tap(data => this.contentHTML = data.html),
+        map((data: ContentChange) => {
+          return data.html
+        })
       )
-      .subscribe((data: ContentChange) => {
-        this.contentSubject.next(data.html)
-      })
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+  saveEntry() {
+    this.firestore.collection('entries')
+      .add({content: this.contentHTML})
+      .then(res => {
+        console.log('add response: ', res);
+      })
+      .catch(e => {
+        console.log('error: ', e);
+      })
   }
 }
