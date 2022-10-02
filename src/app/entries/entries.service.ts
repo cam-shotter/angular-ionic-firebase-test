@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Entry } from './entry/entry.class';
-import { tap, catchError, Observable, throwError } from 'rxjs';
+import { tap, catchError, Observable, throwError, shareReplay } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -9,13 +9,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root'
 })
 export class EntriesService {
-  private entriesUrl = 'api/entries';
-
-  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) {}
 
   entries$ = this.firestore.collection<Entry>('entries').valueChanges()
     .pipe(
       tap(data => console.log('Entries: ', JSON.stringify(data))),
+      shareReplay(1),
       catchError(this.handleError)
     );
 
