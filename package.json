@@ -2,7 +2,7 @@
   "name": "journal",
   "version": "0.0.1",
   "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://journal-9471c.web.app/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
