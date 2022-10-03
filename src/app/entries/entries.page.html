@@ -20,7 +20,6 @@
     </ng-container>
     <ng-template #viewEntries>
       <ng-container *ngFor="let entry of entries$ | async">
-        <p>{{entry.lastSaved.toDate() | date: 'dd MMM yyyy, h:mm:ss a'}}</p>
         <app-list [entry]="entry" (click)="selectEntry(entry)"></app-list>
       </ng-container>
     </ng-template>

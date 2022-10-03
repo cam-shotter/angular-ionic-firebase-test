@@ -1,11 +1,12 @@
 <ion-list [inset]="true">
-  <ion-item color="light" button [detail]="true">
+  <ion-item color="light" button [detail]="false">
     <ion-avatar slot="start">
       <ion-icon size="large" name="happy-outline"></ion-icon>
     </ion-avatar>
     <ion-label>
       <h2>{{entry.name}}</h2>
-      <app-quill-view [content]="entry.content"></app-quill-view>
+      <p>{{entry.lastSaved.toDate() | date: 'dd MMM yyyy, h:mm:ss a'}}</p>
+      <!-- <app-quill-view [content]="entry.content"></app-quill-view> -->
     </ion-label>
     <ng-container *ngFor="let label of entry.labels">
       <ion-chip [outline]="false" [color]="(label===labelsEnum.important)?'danger':'primary'" >
@@ -13,7 +14,13 @@
         <ion-label>{{label}}</ion-label>
       </ion-chip>
     </ng-container>
-    <ion-icon slot="end" name="create-outline"></ion-icon>
-    <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
 </ion-list>
