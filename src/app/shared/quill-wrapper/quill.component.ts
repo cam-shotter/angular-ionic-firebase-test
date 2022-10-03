@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Labels } from '@Shared/enums/labels';
 import { EntriesService } from 'app/entries/entries.service';
 import { EntryInterface } from 'app/entries/entry/entry.class';
+import { Timestamp } from 'firebase/firestore';
 import { ContentChange, QuillEditorComponent } from 'ngx-quill';
 import { debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
 
@@ -39,7 +40,7 @@ export class QuillComponent implements OnInit {
     const entryToSave: EntryInterface = {
       id: '',
       name: 'Test name',
-      lastSaved: new Date(),
+      lastSaved: Timestamp.now(),
       content: this.contentHTML,
       createdBy: 'Cam',
       labels: [Labels.important],

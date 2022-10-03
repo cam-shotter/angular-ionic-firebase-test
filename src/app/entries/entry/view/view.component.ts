@@ -19,5 +19,4 @@ export class ViewComponent {
   confirm() {
     return this.modalCtrl.dismiss(null, 'confirm');
   }
-
 }

@@ -1,9 +1,10 @@
 import { Labels } from "@Shared/enums/labels";
+import { Timestamp } from "firebase/firestore";
 
 export interface EntryInterface {
   id: string;
   name: string;
-  lastSaved: Date;
+  lastSaved: Timestamp;
   content: string;
   createdBy: string;
   labels: Labels[];
@@ -13,7 +14,7 @@ export interface EntryInterface {
 export class Entry {
   public id: string;
   public name: string;
-  public lastSaved: Date;
+  public lastSaved: Timestamp;
   public content: string;
   public createdBy: string;
   public labels: Labels[];
@@ -22,7 +23,7 @@ export class Entry {
   constructor(
     id = '',
     name = '',
-    lastSaved = new Date(),
+    lastSaved = Timestamp.now(),
     content = '',
     createdBy = 'Cam',
     labels = [],
