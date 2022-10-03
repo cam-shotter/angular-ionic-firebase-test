@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./quill-view.component.scss'],
 })
 export class QuillViewComponent implements OnInit {
-  @Input() content$: string;
+  @Input() content: string;
 
   constructor() { }
 

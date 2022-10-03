@@ -42,12 +42,15 @@ export class EntriesPage implements OnInit {
   selectEntry(entry: EntryInterface) {
     this.selectedEntry = entry;
     console.log('show: ', this.selectedEntry);
-    this.openModal();
+    this.openModal(entry);
   }
 
-  async openModal() {
+  async openModal(entry: EntryInterface) {
     const modal = await this.modalCtrl.create({
       component: ViewComponent,
+      componentProps: {
+        entry: entry
+      }
     });
     modal.present();
 
