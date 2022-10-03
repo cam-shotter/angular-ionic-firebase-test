@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { EntryInterface } from '../entry.class';
 
@@ -7,15 +7,10 @@ import { EntryInterface } from '../entry.class';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent {
   entry: EntryInterface;
 
   constructor(private modalCtrl: ModalController) {}
-
-  ngOnInit() {
-    console.log('the entry: string: ', this.entry);
-
-  }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
