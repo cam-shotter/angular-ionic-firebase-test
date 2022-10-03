@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Labels } from '@Shared/enums/labels';
-import { Entry, EntryInterface } from '../entry.class';
+import { EntriesService } from 'app/entries/entries.service';
+import { EntryInterface } from '../entry.class';
 import { ViewComponent } from '../view/view.component';
 
 @Component({
@@ -10,22 +11,26 @@ import { ViewComponent } from '../view/view.component';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  @Input() entry: Entry;
+  @Input() entry: EntryInterface;
 
   labelsEnum = Labels;
 
-  constructor(private modalCtrl: ModalController) {
-  }
+  constructor(
+    private entriesService: EntriesService,
+    private modalCtrl: ModalController,
+    private actionSheetCtrl: ActionSheetController
+  ) {}
 
   ngOnInit() {}
 
-  editEntry(evt) {
-    console.log('edit: ', evt);
+  editEntry(entry) {
+    console.log('edit: ', entry);
     // this.openModal(entry);
   }
 
-  deleteEntry(evt) {
-    console.log('delete: ', evt);
+  deleteEntry(entry) {
+
+    this.presentActionSheet(entry);
     // this.openModal(entry);
   }
 
@@ -47,6 +52,33 @@ export class ListComponent implements OnInit {
     // if (role === 'confirm') {
     //   this.message = `Hello, ${data}!`;
     // }
+  }
+
+   async presentActionSheet(entry) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Are you sure you want to delete this entry?',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          data: {
+            action: 'delete',
+          },
+          handler: () => {
+            this.entriesService.deleteEntry(entry);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          data: {
+            action: 'cancel',
+          },
+        },
+      ],
+    });
+
+    await actionSheet.present();
   }
 
 }

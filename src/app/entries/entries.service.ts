@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Entry, EntryInterface } from './entry/entry.class';
-import { tap, catchError, Observable, throwError, shareReplay } from 'rxjs';
+import { EntryInterface } from './entry/entry.class';
+import { catchError, Observable, throwError, shareReplay } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -47,7 +47,7 @@ export class EntriesService {
       })
   }
 
-  editEntry() {
+  editEntry(entryDetails: EntryInterface) {
     this.saveNewRevision();
   }
 
