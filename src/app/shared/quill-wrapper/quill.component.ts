@@ -12,8 +12,6 @@ import { debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
   styleUrls: ['./quill.component.scss'],
 })
 export class QuillComponent implements OnInit {
-  @Input() editorPlaceholder = 'Placeholder';
-
   @ViewChild('editor', {
     static: true
   }) editor: QuillEditorComponent
@@ -22,7 +20,7 @@ export class QuillComponent implements OnInit {
 
   editorContent$: Observable<string>;
 
-  constructor(private firestore: AngularFirestore, private entriesService: EntriesService) {}
+  constructor(private entriesService: EntriesService) {}
 
   ngOnInit() {
     this.editorContent$ = this.editor

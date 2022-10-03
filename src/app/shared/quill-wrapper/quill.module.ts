@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuillComponent } from './quill.component';
 import { QuillModule } from 'ngx-quill';
 import { IonicModule } from '@ionic/angular';
+import { QuillViewComponent } from './quill-view/quill-view.component';
 
 const toolbarConfig = [
   ['bold', 'italic', 'underline'],        // toggled buttons
@@ -19,7 +20,7 @@ const toolbarConfig = [
 ];
 
 @NgModule({
-  declarations: [QuillComponent],
+  declarations: [QuillComponent, QuillViewComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -31,6 +32,6 @@ const toolbarConfig = [
       theme: 'snow'
     }),
   ],
-  exports: [QuillComponent]
+  exports: [QuillComponent, QuillViewComponent]
 })
 export class QuillWrapperModule { }
