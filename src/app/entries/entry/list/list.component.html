@@ -1,11 +1,11 @@
 <ion-list [inset]="true">
-  <ion-item button [detail]="true">
+  <ion-item color="light" button [detail]="true">
     <ion-avatar slot="start">
       <ion-icon size="large" name="happy-outline"></ion-icon>
     </ion-avatar>
     <ion-label>
       <h2>{{entry.name}}</h2>
-      <app-quill-view class="fade" [content$]="entry.content"></app-quill-view>
+      <app-quill-view [content$]="entry.content"></app-quill-view>
     </ion-label>
     <ng-container *ngFor="let label of entry.labels">
       <ion-chip [outline]="false" [color]="(label===labelsEnum.important)?'danger':'primary'" >
