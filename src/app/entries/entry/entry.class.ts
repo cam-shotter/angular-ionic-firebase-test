@@ -1,10 +1,5 @@
 import { Labels } from "@Shared/enums/labels";
 
-export enum EntryStateEnum {
-  new = 'new',
-  saved = 'saved'
-}
-
 export interface EntryInterface {
   id: string;
   name: string;

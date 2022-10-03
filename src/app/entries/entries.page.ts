@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, EMPTY, Observable, of, Subject, tap } from 'rxjs';
 import { EntriesService } from './entries.service';
-import { Entry } from './entry/entry.class';
+import { Entry, EntryInterface } from './entry/entry.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
@@ -16,7 +16,7 @@ export class EntriesPage implements OnInit {
 
   public id: string;
   public creatingNewEntry: boolean = false;
-  public selectedEntry: Entry;
+  public selectedEntry: EntryInterface;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,8 +35,9 @@ export class EntriesPage implements OnInit {
     this.selectedEntry = Entry.createNew();
   }
 
-  selectEntry(entry: Entry) {
-    this.selectedEntry = entry.clone();
+  selectEntry(entry: EntryInterface) {
+    this.selectedEntry = entry;
+    console.log('show: ', this.selectedEntry);
   }
 
   ngOnInit() {
