@@ -5,7 +5,7 @@
     </ion-avatar>
     <ion-label>
       <h2>{{entry.name}}</h2>
-      <app-quill-view [content$]="entry.content"></app-quill-view>
+      <app-quill-view class="fade" [content$]="entry.content"></app-quill-view>
     </ion-label>
     <ng-container *ngFor="let label of entry.labels">
       <ion-chip [outline]="false" [color]="(label===labelsEnum.important)?'danger':'primary'" >

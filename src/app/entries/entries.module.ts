@@ -11,6 +11,7 @@ import { QuillWrapperModule } from '../shared/quill-wrapper/quill.module';
 import { CardComponent } from './entry/card/card.component';
 import { ListComponent } from './entry/list/list.component';
 import { CreateComponent } from './entry/create/create.component';
+import { ViewComponent } from './entry/view/view.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { CreateComponent } from './entry/create/create.component';
     EntriesPageRoutingModule,
     QuillWrapperModule,
   ],
-  declarations: [EntriesPage, CardComponent, ListComponent, CreateComponent]
+  declarations: [EntriesPage, CardComponent, ListComponent, CreateComponent, ViewComponent]
 })
 export class EntriesPageModule {}

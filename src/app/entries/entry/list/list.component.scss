@@ -1,3 +1,29 @@
 ion-icon {
   font-size: 1.75em;
 }
+
+// ion-label {
+//   // display: -webkit-box;
+//   // -webkit-line-clamp: 3;
+//   // -webkit-box-orient: vertical;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   max-height: 8ex;
+// }
+
+.fade {
+  display: inline-grid;
+  position: relative;
+  block-size: 8ex;
+  /* exactly three lines */
+}
+
+.fade:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  // width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
