@@ -9,7 +9,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding">
   <h1>{{entry.name}}</h1>
   <app-quill-view [content]="entry.content"></app-quill-view>
 </ion-content>

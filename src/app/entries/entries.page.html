@@ -20,7 +20,7 @@
     </ng-container>
     <ng-template #viewEntries>
       <ng-container *ngFor="let entry of entries$ | async">
-        <app-list [entry]="entry" (click)="selectEntry(entry)"></app-list>
+        <app-list [entry]="entry"></app-list>
       </ng-container>
     </ng-template>
   </div>

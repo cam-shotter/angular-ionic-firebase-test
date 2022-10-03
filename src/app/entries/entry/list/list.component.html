@@ -1,9 +1,9 @@
 <ion-list [inset]="true">
-  <ion-item color="light" button [detail]="false">
+  <ion-item color="light" lines="none" button [detail]="false">
     <ion-avatar slot="start">
       <ion-icon size="large" name="happy-outline"></ion-icon>
     </ion-avatar>
-    <ion-label>
+    <ion-label (click)="selectEntry(entry)">
       <h2>{{entry.name}}</h2>
       <p>{{entry.lastSaved.toDate() | date: 'dd MMM yyyy, h:mm:ss a'}}</p>
       <!-- <app-quill-view [content]="entry.content"></app-quill-view> -->
@@ -15,10 +15,10 @@
       </ion-chip>
     </ng-container>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="editEntry($event)">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)="deleteEntry($event)">
         <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>

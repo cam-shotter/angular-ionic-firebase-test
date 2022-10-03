@@ -24,11 +24,11 @@ export class EntriesPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private entriesService: EntriesService,
-    private modalCtrl: ModalController
   ) {}
 
   entries$ = this.entriesService.entries$
     .pipe(
+      tap(data => console.log('entries: ', data)),
       catchError((err) => {
         this.errorMessageSubject.next(err);
         return EMPTY;
@@ -37,28 +37,6 @@ export class EntriesPage implements OnInit {
 
   createNewEntry(): void {
     this.selectedEntry = Entry.createNew();
-  }
-
-  selectEntry(entry: EntryInterface) {
-    this.selectedEntry = entry;
-    console.log('show: ', this.selectedEntry);
-    this.openModal(entry);
-  }
-
-  async openModal(entry: EntryInterface) {
-    const modal = await this.modalCtrl.create({
-      component: ViewComponent,
-      componentProps: {
-        entry: entry
-      }
-    });
-    modal.present();
-
-    const { data, role } = await modal.onWillDismiss();
-
-    // if (role === 'confirm') {
-    //   this.message = `Hello, ${data}!`;
-    // }
   }
 
   ngOnInit() {

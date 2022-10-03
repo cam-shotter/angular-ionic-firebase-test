@@ -11,14 +11,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class EntriesService {
   constructor(private firestore: AngularFirestore) {}
 
-  entries$ = this.firestore.collection<Entry>('entries').valueChanges()
+  entries$ = this.firestore.collection<EntryInterface>('entries').valueChanges({idField: 'id'})
     .pipe(
       shareReplay(1),
       catchError(err => this.handleError(err))
     );
 
   saveEntry(entryDetails: EntryInterface) {
-    this.firestore.collection('entries')
+    this.firestore.collection<EntryInterface>('entries')
       .add({
         content: entryDetails.content,
         createdBy: entryDetails.createdBy,
@@ -33,6 +33,26 @@ export class EntriesService {
       .catch(err => {
         this.handleError(err)
       })
+  }
+
+  deleteEntry(entryDetails: EntryInterface) {
+    this.firestore.collection('entries')
+      .doc(entryDetails.id)
+      .delete()
+      .then(res => {
+        console.log('entry deleted: ', entryDetails.id, ': ', res);
+      })
+      .catch(err => {
+        this.handleError(err)
+      })
+  }
+
+  editEntry() {
+    this.saveNewRevision();
+  }
+
+  private saveNewRevision() {
+
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
