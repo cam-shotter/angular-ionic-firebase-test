@@ -1,5 +1,15 @@
 
 <div class="container">
   <h1>Create new entry</h1>
-  <app-quill></app-quill>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input
+      [formControl]="title"
+      type="text"
+      clearInput
+      placeholder="Give your entry a title"
+    >
+    </ion-input>
+  </ion-item>
+  <app-quill [entryTitle]="this.entryTitle$ | async"></app-quill>
 </div>

@@ -13,6 +13,8 @@ import { debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
   styleUrls: ['./quill.component.scss'],
 })
 export class QuillComponent implements OnInit {
+  @Input() entryTitle: string = 'New entry';
+
   @ViewChild('editor', {
     static: true
   }) editor: QuillEditorComponent
@@ -37,14 +39,19 @@ export class QuillComponent implements OnInit {
   }
 
   saveEntry() {
+    console.log(this.entryTitle);
+
     const entryToSave: EntryInterface = {
       id: '',
-      name: 'Test name',
+      name: this.entryTitle,
       lastSaved: Timestamp.now(),
       content: this.contentHTML,
       createdBy: 'Cam',
       labels: [Labels.important],
     }
+
+    console.log(entryToSave);
+
 
     this.entriesService.saveEntry(entryToSave);
   }

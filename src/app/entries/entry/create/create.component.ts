@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
+  title = new FormControl<string>('');
 
-  constructor() { }
+  entryTitle$: Observable<string> = this.title.valueChanges;
 
-  ngOnInit() {}
+  constructor() {}
+
+  ngOnInit() {
+
+  }
 
 }
