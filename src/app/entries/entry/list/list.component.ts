@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Labels } from '@Shared/enums/labels';
 import { EntriesService } from 'app/entries/entries.service';
+import { EditComponent } from '../edit/edit.component';
 import { EntryInterface } from '../entry.class';
 import { ViewComponent } from '../view/view.component';
 
@@ -22,8 +23,8 @@ export class ListComponent {
     private actionSheetCtrl: ActionSheetController
   ) {}
 
-  editEntry(entry) {
-    console.log('edit: ', entry);
+  editEntry(entry: EntryInterface) {
+    this.openEditModal(entry);
   }
 
   deleteEntry(entry) {
@@ -37,6 +38,16 @@ export class ListComponent {
   private async openModal(entry: EntryInterface) {
     const modal = await this.modalCtrl.create({
       component: ViewComponent,
+      componentProps: {
+        entry: entry
+      }
+    });
+    modal.present();
+  }
+
+  private async openEditModal(entry: EntryInterface) {
+    const modal = await this.modalCtrl.create({
+      component: EditComponent,
       componentProps: {
         entry: entry
       }

@@ -10,7 +10,10 @@ import { BehaviorSubject, debounceTime, distinctUntilChanged, map, Observable, t
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuillComponent {
-  @Input() entryTitle: string = 'New entry';
+  @Input()
+  public set content(value: string) {
+    this.contentHTMLSubject.next(value);
+  }
 
   private contentHTMLSubject = new BehaviorSubject<string>('');
   editorContent$: Observable<string> = this.contentHTMLSubject.asObservable();

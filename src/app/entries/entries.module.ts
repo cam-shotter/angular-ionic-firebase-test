@@ -12,6 +12,7 @@ import { CardComponent } from './entry/card/card.component';
 import { ListComponent } from './entry/list/list.component';
 import { CreateComponent } from './entry/create/create.component';
 import { ViewComponent } from './entry/view/view.component';
+import { EditComponent } from './entry/edit/edit.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,13 @@ import { ViewComponent } from './entry/view/view.component';
     QuillWrapperModule,
     ReactiveFormsModule,
   ],
-  declarations: [EntriesPage, CardComponent, ListComponent, CreateComponent, ViewComponent]
+  declarations: [
+    EntriesPage,
+    CardComponent,
+    ListComponent,
+    CreateComponent,
+    ViewComponent,
+    EditComponent,
+  ]
 })
 export class EntriesPageModule {}

@@ -47,12 +47,42 @@ export class EntriesService {
       })
   }
 
-  editEntry(entryDetails: EntryInterface) {
-    this.saveNewRevision();
+  saveCurrentEntryAsRevision(entryDetails: EntryInterface) {
+    this.firestore.collection('entries')
+    .doc(entryDetails.id)
+    .collection('revisions')
+    .add({
+        content: entryDetails.content,
+        createdBy: entryDetails.createdBy,
+        id: entryDetails.id,
+        labels: entryDetails.labels,
+        lastSaved: entryDetails.lastSaved,
+        name: entryDetails.name,
+      })
+      .then(res => {
+        console.log('add response revision: ', res);
+      })
+      .catch(err => {
+        this.handleError(err)
+      })
   }
 
-  private saveNewRevision() {
-
+  saveNewEdit(entryDetails: EntryInterface) {
+    this.firestore.collection('entries')
+    .doc(entryDetails.id)
+    .set({
+        content: entryDetails.content,
+        createdBy: entryDetails.createdBy,
+        labels: entryDetails.labels,
+        lastSaved: entryDetails.lastSaved,
+        name: entryDetails.name,
+      })
+      .then(res => {
+        console.log('add response edit: ', res);
+      })
+      .catch(err => {
+        this.handleError(err)
+      })
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

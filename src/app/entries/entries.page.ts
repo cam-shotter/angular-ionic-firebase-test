@@ -24,7 +24,6 @@ export class EntriesPage implements OnInit {
 
   entries$ = this.entriesService.entries$
     .pipe(
-      tap(data => console.log('entries: ', data)),
       catchError((err) => {
         this.errorMessageSubject.next(err);
         return EMPTY;

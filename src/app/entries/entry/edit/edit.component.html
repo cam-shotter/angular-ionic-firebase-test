@@ -2,24 +2,14 @@
   <h1>Create new entry</h1>
   <ion-item>
     <ion-label position="floating">Created By</ion-label>
-    <ion-input
-      [formControl]="createdBy"
-      type="text"
-      clearInput
-      placeholder="Who is writing this?"
-    >
+    <ion-input [value]="entry.createdBy" type="text" clearInput placeholder="Who is writing this?">
     </ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Title</ion-label>
-    <ion-input
-      [formControl]="title"
-      type="text"
-      clearInput
-      placeholder="Give your entry a unique title"
-    >
+    <ion-input [value]="entry.name" type="text" clearInput placeholder="Give your entry a unique title">
     </ion-input>
   </ion-item>
   <button (click)="saveEntry()">Save Entry</button>
-  <app-quill></app-quill>
+  <app-quill [content]="entry.content"></app-quill>
 </div>

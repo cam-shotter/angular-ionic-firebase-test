@@ -31,7 +31,6 @@ export class CreateComponent {
     this.createService.setCreatedBy(this.createdBy.value);
     this.createService.setLabels([Labels.important]);
     this.createService.entry$.pipe(
-      tap(data => console.log(data)),
       map((data) => {
         const entryToSave: EntryInterface = {
           id: '',
