@@ -1,57 +1,40 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { Labels } from '@Shared/enums/labels';
 import { EntriesService } from 'app/entries/entries.service';
 import { EntryInterface } from 'app/entries/entry/entry.class';
 import { Timestamp } from 'firebase/firestore';
 import { ContentChange, QuillEditorComponent } from 'ngx-quill';
-import { debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-quill',
   templateUrl: './quill.component.html',
   styleUrls: ['./quill.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuillComponent implements OnInit {
+export class QuillComponent {
   @Input() entryTitle: string = 'New entry';
 
-  @ViewChild('editor', {
-    static: true
-  }) editor: QuillEditorComponent
-
-  private contentHTML: string;
-
-  editorContent$: Observable<string>;
+  private contentHTMLSubject = new BehaviorSubject<string>('');
+  editorContent$: Observable<string> = this.contentHTMLSubject.asObservable();
 
   constructor(private entriesService: EntriesService) {}
 
-  ngOnInit() {
-    this.editorContent$ = this.editor
-      .onContentChanged
-      .pipe(
-        debounceTime(400),
-        distinctUntilChanged(),
-        tap(data => this.contentHTML = data.html),
-        map((data: ContentChange) => {
-          return data.html
-        })
-      )
+  changeContent(data: ContentChange) {
+    debounceTime(400);
+    distinctUntilChanged();
+    this.contentHTMLSubject.next(data.html);
   }
 
   saveEntry() {
-    console.log(this.entryTitle);
-
     const entryToSave: EntryInterface = {
       id: '',
       name: this.entryTitle,
       lastSaved: Timestamp.now(),
-      content: this.contentHTML,
+      content: this.contentHTMLSubject.getValue(),
       createdBy: 'Cam',
       labels: [Labels.important],
     }
-
-    console.log(entryToSave);
-
 
     this.entriesService.saveEntry(entryToSave);
   }
