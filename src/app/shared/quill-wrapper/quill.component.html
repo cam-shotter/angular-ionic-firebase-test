@@ -1,7 +1,8 @@
-<quill-editor (onContentChanged)="changeContent($event)" format="html" [sanitize]="true"></quill-editor>
+<quill-editor
+  (onContentChanged)="changeContent($event)"
+  format="html"
+  [sanitize]="true"
+>
+</quill-editor>
 
 <quill-view-html [content]="editorContent$ | async"></quill-view-html>
-
-<button (click)="saveEntry()">Save Entry</button>
-
-

@@ -1,9 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
-import { Labels } from '@Shared/enums/labels';
-import { EntriesService } from 'app/entries/entries.service';
-import { EntryInterface } from 'app/entries/entry/entry.class';
-import { Timestamp } from 'firebase/firestore';
-import { ContentChange, QuillEditorComponent } from 'ngx-quill';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CreateService } from 'app/entries/entry/create/create.service';
+import { ContentChange } from 'ngx-quill';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, map, Observable, tap } from 'rxjs';
 
 @Component({
@@ -18,24 +15,12 @@ export class QuillComponent {
   private contentHTMLSubject = new BehaviorSubject<string>('');
   editorContent$: Observable<string> = this.contentHTMLSubject.asObservable();
 
-  constructor(private entriesService: EntriesService) {}
+  constructor(private createService: CreateService) {}
 
   changeContent(data: ContentChange) {
     debounceTime(400);
     distinctUntilChanged();
     this.contentHTMLSubject.next(data.html);
-  }
-
-  saveEntry() {
-    const entryToSave: EntryInterface = {
-      id: '',
-      name: this.entryTitle,
-      lastSaved: Timestamp.now(),
-      content: this.contentHTMLSubject.getValue(),
-      createdBy: 'Cam',
-      labels: [Labels.important],
-    }
-
-    this.entriesService.saveEntry(entryToSave);
+    this.createService.setContent(data.html);
   }
 }
