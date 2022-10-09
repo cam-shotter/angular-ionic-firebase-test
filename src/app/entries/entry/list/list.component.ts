@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Labels } from '@Shared/enums/labels';
 import { EntriesService } from 'app/entries/entries.service';
@@ -9,8 +9,9 @@ import { ViewComponent } from '../view/view.component';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   @Input() entry: EntryInterface;
 
   labelsEnum = Labels;
@@ -21,24 +22,19 @@ export class ListComponent implements OnInit {
     private actionSheetCtrl: ActionSheetController
   ) {}
 
-  ngOnInit() {}
-
   editEntry(entry) {
     console.log('edit: ', entry);
-    // this.openModal(entry);
   }
 
   deleteEntry(entry) {
-
     this.presentActionSheet(entry);
-    // this.openModal(entry);
   }
 
   selectEntry(entry: EntryInterface) {
     this.openModal(entry);
   }
 
-  async openModal(entry: EntryInterface) {
+  private async openModal(entry: EntryInterface) {
     const modal = await this.modalCtrl.create({
       component: ViewComponent,
       componentProps: {
@@ -46,15 +42,9 @@ export class ListComponent implements OnInit {
       }
     });
     modal.present();
-
-    const { data, role } = await modal.onWillDismiss();
-
-    // if (role === 'confirm') {
-    //   this.message = `Hello, ${data}!`;
-    // }
   }
 
-   async presentActionSheet(entry) {
+  private async presentActionSheet(entry) {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Are you sure you want to delete this entry?',
       buttons: [
@@ -80,5 +70,4 @@ export class ListComponent implements OnInit {
 
     await actionSheet.present();
   }
-
 }

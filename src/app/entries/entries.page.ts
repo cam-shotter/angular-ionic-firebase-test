@@ -1,12 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, EMPTY, Observable, of, Subject, tap } from 'rxjs';
+import { catchError, EMPTY, Subject, tap } from 'rxjs';
 import { EntriesService } from './entries.service';
 import { Entry, EntryInterface } from './entry/entry.class';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { IonModal, ModalController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components';
-import { ViewComponent } from './entry/view/view.component';
 
 @Component({
   selector: 'app-entries',
